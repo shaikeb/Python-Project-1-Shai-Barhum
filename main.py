@@ -79,18 +79,18 @@ else:
             url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
             r = rq.get(url)
             results = json.loads(r.text)
-            Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
-            if Yes_or_No1=='Yes':
-                with open('default.txt', 'w') as f:
-                    print (new_city_name, file=f)
-                    for word in cities:
-                        print (word, file=f)
-            else:
-                Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
-                if Yes_or_No2=='Yes':
-                    f = open('default.txt', 'a')
-                    print(new_city_name, file=f)
-                    f.close()
+        Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
+        if Yes_or_No1=='Yes':
+            with open('default.txt', 'w') as f:
+                print (new_city_name, file=f)
+                for word in cities:
+                    print (word, file=f)
+        else:
+            Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
+            if Yes_or_No2=='Yes':
+                f = open('default.txt', 'a')
+                print(new_city_name, file=f)
+                f.close()
     new_type=st.text_input(f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
     if  (new_type==''):
             pass
