@@ -1,7 +1,1 @@
-Jerusalem
-London
-Hadera
-Holon
-Tel Aviv
-Yavne
-Naharia
+Default
