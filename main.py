@@ -65,10 +65,10 @@ else:
     results_button.append(st.button(f'default city: {cities[0]}'))
     for i in range (1,int(len(cities))):
         results_button.append(st.button (cities[i]))
-    for i in range (0,len(results_button)):
+    results_button.append(st.button('Another city'))
+    for i in range (0,len(results_button)-1):
         if results_button[i]==True:
             new_city_name=cities[i]
-    results_button.append(st.button('Another city'))
     if (results_button[len(results_button)-1]):
         new_city_name=st.text_input('Please type the city name:')
         url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
