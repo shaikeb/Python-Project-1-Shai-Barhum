@@ -66,8 +66,10 @@ else:
         results_button.append(cities[i])
     results_button.append('Another city')
     choises=st.radio('Choose City', results_button)
-    if choises!='Another City':
-        new_city_name=choises
+    if (choises=='default city:'+{cities[0]}):
+        new_city_name = cities[0]
+    elif choises!='Another City':
+        new_city_name = choises
     else:
         new_city_name=st.text_input('Please type the city name:')
         url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
