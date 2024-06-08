@@ -70,7 +70,7 @@ else:
         new_city_name = cities[0]
     elif choises!='Another City':
         new_city_name = choises
-    else:
+    elif choises=='Another City':
         new_city_name=st.text_input('Please type the city name:')
         url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
         r = rq.get(url)
