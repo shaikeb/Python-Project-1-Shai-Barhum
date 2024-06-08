@@ -62,7 +62,7 @@ else:
             cities.append(city_from_list_striped)
     f.close()
     results_button=[]
-    results_button.append(f'default city: {cities[0]}'))
+    results_button.append(f'default city: {cities[0]}')
     for i in range (1,int(len(cities))):
         results_button.append(cities[i])
     results_button.append('Another city')
