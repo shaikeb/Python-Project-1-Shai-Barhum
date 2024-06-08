@@ -62,14 +62,14 @@ else:
             cities.append(city_from_list_striped)
     f.close()
     results_button=[]
-    results_button.append(st.button(f'default city: {cities[0]}'))
+    results_button.append(f'default city: {cities[0]}'))
     for i in range (1,int(len(cities))):
-        results_button.append(st.button (cities[i]))
-    results_button.append(st.button('Another city'))
-    for i in range (0,len(results_button)-1):
-        if results_button[i]==True:
-            new_city_name=cities[i]
-    if results_button[-1] == True:
+        results_button.append(cities[i])
+    results_button.append('Another city')
+    choises=st.radio('Choose City', results_button)
+    if choises!='Another City':
+        new_city_name=choises
+    else:
         new_city_name=st.text_input('Please type the city name:')
         url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
         r = rq.get(url)
