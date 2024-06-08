@@ -68,8 +68,34 @@ else:
     choises=st.radio('Choose City', results_button)
     if choises==f'default city: {cities[0]}':
         new_city_name = cities[0]
+        ff = open('defaulttemp.txt', 'r')
+        f_or_c = ff.read().strip()
+        ff.close()
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
+        r = rq.get(url)
+        results = json.loads(r.text)
+        st.write(f'The weather at {new_city_name} is', results['weather'][0]['main'])
+        if (f_or_c == 'c'):
+            st.write(f'The temperature at {new_city_name} is', int((results['main']['temp']) - 273), "Celsius Degrees")
+        else:
+            st.write(f'The temperature at {new_city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                     "Fahrenheit Degrees")
+        st.write(f'The humidity percent at {new_city_name} is', results['main']['humidity'], "%")
     elif choises!='Another City':
         new_city_name = choises
+        ff = open('defaulttemp.txt', 'r')
+        f_or_c = ff.read().strip()
+        ff.close()
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
+        r = rq.get(url)
+        results = json.loads(r.text)
+        st.write(f'The weather at {new_city_name} is', results['weather'][0]['main'])
+        if (f_or_c == 'c'):
+            st.write(f'The temperature at {new_city_name} is', int((results['main']['temp']) - 273), "Celsius Degrees")
+        else:
+            st.write(f'The temperature at {new_city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                     "Fahrenheit Degrees")
+        st.write(f'The humidity percent at {new_city_name} is', results['main']['humidity'], "%")
     elif choises=='Another City':
         ncn=st.text_input('Please type the city name:')
         url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
@@ -121,16 +147,3 @@ else:
                     st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
                              "Fahrenheit Degrees")
                 st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
-    if choises != 'Another City':
-        ff = open('defaulttemp.txt', 'r')
-        f_or_c=ff.read().strip()
-        ff.close()
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
-        r=rq.get(url)
-        results=json.loads(r.text)
-        st.write (f'The weather at {new_city_name} is',results['weather'][0]['main'])
-        if (f_or_c=='c'):
-            st.write (f'The temperature at {new_city_name} is', int((results['main']['temp'])-273), "Celsius Degrees")
-        else:
-            st.write(f'The temperature at {new_city_name} is', 1.8*int((results['main']['temp']) - 273)+32, "Fahrenheit Degrees")
-        st.write (f'The humidity percent at {new_city_name} is', results['main']['humidity'], "%")
