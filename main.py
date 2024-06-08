@@ -65,7 +65,7 @@ else:
     for i in range (1,int(len(cities))):
         results_button.append(cities[i])
     results_button.append('Another city')
-    print ('default city:'+cities[0])
+    st.write ('default city:'+cities[0])
     choises=st.radio('Choose City', results_button)
     if (choises=='default city:'+cities[0]):
         new_city_name = cities[0]
