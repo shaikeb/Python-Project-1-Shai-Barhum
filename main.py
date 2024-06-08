@@ -66,7 +66,7 @@ else:
         results_button.append(cities[i])
     results_button.append('Another city')
     choises=st.radio('Choose City', results_button)
-    if (choises=='default city:'+{cities[0]}):
+    if (choises=='default city:'+cities[0]):
         new_city_name = cities[0]
     elif choises!='Another City':
         new_city_name = choises
