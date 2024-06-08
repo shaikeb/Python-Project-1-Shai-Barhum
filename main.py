@@ -92,21 +92,21 @@ else:
                 f = open('default.txt', 'a')
                 print(new_city_name, file=f)
                 f.close()
-    new_type=st.text_input(f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
-    if  (new_type==''):
+        new_type=st.text_input(f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
+        if  (new_type==''):
             pass
-    else:
-        ff = open('defaulttemp.txt', 'r')
-        if (ff.read().strip() == 'f'):
-            ff.close()
-            ff = open('defaulttemp.txt', 'w')
-            print('c', file=ff)
-            ff.close()
         else:
-            ff.close()
-            ff = open('defaulttemp.txt', 'w')
-            print('f', file=ff)
-            ff.close()
+            ff = open('defaulttemp.txt', 'r')
+            if (ff.read().strip() == 'f'):
+                ff.close()
+                ff = open('defaulttemp.txt', 'w')
+                print('c', file=ff)
+                ff.close()
+            else:
+                ff.close()
+                ff = open('defaulttemp.txt', 'w')
+                print('f', file=ff)
+                ff.close()
     ff = open('defaulttemp.txt', 'r')
     f_or_c=ff.read().strip()
     ff.close()
