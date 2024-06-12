@@ -48,7 +48,7 @@ if (city=='Default'):
         else:
             st.write(f'The temperature at {city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32, "Fahrenheit Degrees")
         st.write(f'The humidity percent at {city_name} is', results['main']['humidity'], "%")
-        move=t.button("Ok, Lets move forward")
+        move=st.button("Ok, Lets move forward")
     if move:
         f = open('default.txt', 'w')
         print(city_name, file=f)
