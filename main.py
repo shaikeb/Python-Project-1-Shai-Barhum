@@ -106,7 +106,7 @@ else:
         ff.close()
     if choises=='Another city':
         new_type1 = st.text_input(
-        f'Type change if you want to change the temperature unit from {f_or_c}, else type No')
+        f'Type change if you want to Change the temperature unit from {f_or_c}, else type No')
         if (new_type1 == 'No'):
             pass
         else:
@@ -124,7 +124,7 @@ else:
                 ff = open('defaulttemp.txt', 'r')
                 f_or_c = ff.read().strip()
                 ff.close()
-            if new_type1=='No' or new_type1=='Yes':
+            if new_type1=='No' or new_type1=='Change':
                 url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
                 r = rq.get(url)
                 results = json.loads(r.text)
@@ -138,7 +138,7 @@ else:
                 st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
     elif choises!='Another city':
         new_type = st.text_input(
-            f'Type change if you want to change the temperature unit from {f_or_c}, else type No')
+            f'Type Change if you want to change the temperature unit from {f_or_c}, else type No')
         if (new_type == 'No'):
             pass
         else:
@@ -159,7 +159,7 @@ else:
         ff = open('defaulttemp.txt', 'r')
         f_or_c = ff.read().strip()
         ff.close()
-        if new_type=='No' or new_type=='Yes':
+        if new_type=='No' or new_type=='Change':
             url1 = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
             r = rq.get(url1)
             results = json.loads(r.text)
