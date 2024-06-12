@@ -3,8 +3,7 @@ import json
 import streamlit as st
 f=open ('default.txt', 'r')
 city=f.read()
-Move=st.button('Click here after done with start settings')
-if (city=='Default' & Move):
+if (city=='Default'):
     city_name=st.text_input('I want to know the weather at the next default city...')
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
     r = rq.get(url)
@@ -39,14 +38,6 @@ if (city=='Default' & Move):
     if type:
         while type != 'c' and 'f':
             type = st.text_input('Try again')
-    f=open('default.txt', 'w')
-    print (city_name, file=f)
-    print(city_name_1, file=f)
-    print(city_name_2, file=f)
-    f.close()
-    ff = open('defaulttemp.txt', 'w')
-    print(type, file=ff)
-    ff.close()
     if st.button("Send"):
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
         r = rq.get(url)
@@ -57,6 +48,16 @@ if (city=='Default' & Move):
         else:
             st.write(f'The temperature at {city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32, "Fahrenheit Degrees")
         st.write(f'The humidity percent at {city_name} is', results['main']['humidity'], "%")
+    move=t.button("Ok' Lets move forward")
+    if move:
+        f = open('default.txt', 'w')
+        print(city_name, file=f)
+        print(city_name_1, file=f)
+        print(city_name_2, file=f)
+        f.close()
+        ff = open('defaulttemp.txt', 'w')
+        print(type, file=ff)
+        ff.close()
 else:
     cities=[]
     with open('default.txt', 'r') as f:
