@@ -35,8 +35,9 @@ if (city=='Default'):
             r = rq.get(url)
             results = json.loads(r.text)
     type=st.text_input('I want the temperature to be presented in (type f or c)')
-    while type != 'c' and 'f':
-        type = st.text_input('Try again')
+    if type:
+        while type != 'c' and 'f':
+            type = st.text_input('Try again')
     f=open('default.txt', 'w')
     print (city_name, file=f)
     print(city_name_1, file=f)
