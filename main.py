@@ -124,17 +124,18 @@ else:
                         f.close()
 
     if choises=='Another city':
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
-        r = rq.get(url)
-        results = json.loads(r.text)
-        st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
-        if (f_or_c == 'c'):
-            st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                    "Celsius Degrees")
-        else:
-            st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
-                    "Fahrenheit Degrees")
-        st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
+        if Yes_or_No2:
+            url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
+            r = rq.get(url)
+            results = json.loads(r.text)
+            st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
+            if (f_or_c == 'c'):
+                st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
+                        "Celsius Degrees")
+            else:
+                st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                        "Fahrenheit Degrees")
+            st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
     elif choises!='Another city':
         new_type = st.text_input(
             f'Type Change if you want to change the temperature unit from {f_or_c}, else type No')
