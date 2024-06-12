@@ -73,7 +73,7 @@ else:
         ff = open('defaulttemp.txt', 'r')
         f_or_c = ff.read().strip()
         ff.close()
-    if choises=='Another City':
+    if choises=='Another city':
         ncn=st.text_input('Please type the city name:')
         url3 = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
         r = rq.get(url3)
