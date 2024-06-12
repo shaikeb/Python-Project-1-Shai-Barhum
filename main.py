@@ -141,10 +141,10 @@ else:
                 print(ncn, file=f)
                 f.close()
         ff = open('defaulttemp.txt', 'r')
-        f_or_cc = ff.read()
+        f_or_ccc = ff.read()
         ff.close()
-        new_type=st.text_input(f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
-        if  (new_type==''):
+        new_type1=st.text_input(f'Type change if you want to change the temperature unit from {f_or_ccc}, else press enter')
+        if  (new_type1==''):
             pass
         else:
             ff = open('defaulttemp.txt', 'r')
