@@ -79,7 +79,7 @@ else:
         r = rq.get(url3)
         results = json.loads(r.text)
         while results['cod'] == '404':
-            new_city_name = st.text_input('Try again')
+            ncn = st.text_input('Try again')
             url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
             r = rq.get(url)
             results = json.loads(r.text)
