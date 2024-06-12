@@ -64,7 +64,7 @@ else:
         results_button.append(cities[i])
     results_button_another.append('Another city')
     choises=st.radio('Choose City', results_button)
-    other_choises = st.radio('My city is not here', results_button_another)
+    other_choises = st.radio('My city is not here', results_button_another, disabled=False)
     if choises == f'default city: {cities[0]}':
         new_city_name = cities[0]
         ff = open('defaulttemp.txt', 'r')
