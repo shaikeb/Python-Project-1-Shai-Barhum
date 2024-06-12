@@ -47,7 +47,7 @@ if (city=='Default'):
     print(type, file=ff)
     ff.close()
     c=1;
-    if c=1:
+    if c==1:
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
         r = rq.get(url)
         results = json.loads(r.text)
