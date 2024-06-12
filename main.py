@@ -48,7 +48,7 @@ if (city=='Default'):
         else:
             st.write(f'The temperature at {city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32, "Fahrenheit Degrees")
         st.write(f'The humidity percent at {city_name} is', results['main']['humidity'], "%")
-        f = open('default.txt', 'w'):
+        f = open('default.txt', 'w')
         print(city_name, file=f)
         print(city_name_1, file=f)
         print(city_name_2, file=f)
