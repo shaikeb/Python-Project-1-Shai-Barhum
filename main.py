@@ -123,8 +123,8 @@ else:
                         print(ncn, file=f)
                         f.close()
 
-    if choises=='Another city':
-        if Yes_or_No2:
+    if Yes_or_No2:
+        if choises=='Another city':
             url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
             r = rq.get(url)
             results = json.loads(r.text)
