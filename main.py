@@ -129,7 +129,7 @@ else:
             st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
                     "Fahrenheit Degrees")
         st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
-    elif choises=='Another city':
+    elif choises!='Another city':
         new_type = st.text_input(
             f'Type change if you want to change the temperature unit from {f_or_c}, else press enter')
         if (new_type == ''):
