@@ -64,57 +64,14 @@ else:
         results_button.append(cities[i])
     results_button_another.append('Another city')
     choises=st.radio('Choose City', results_button)
-    other_choises = st.radio('My city is not here', results_button_another, disabled=False)
+    other_choises = st.radio('My city is not here', results_button_another)
     if choises == f'default city: {cities[0]}':
         new_city_name = cities[0]
         ff = open('defaulttemp.txt', 'r')
-        f_or_cc = ff.read()
-        ff.close()
-        new_type = st.text_input(
-            f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
-        if (new_type == ''):
-            pass
-        else:
-            ff = open('defaulttemp.txt', 'r')
-            if (ff.read().strip() == 'f'):
-                ff.close()
-                ff = open('defaulttemp.txt', 'w')
-                print('c', file=ff)
-                ff.close()
-            else:
-                ff.close()
-                ff = open('defaulttemp.txt', 'w')
-                print('f', file=ff)
-                ff.close()
-                ff = open('defaulttemp.txt', 'r')
-                f_or_c = ff.read().strip()
-                ff.close()
-        ff = open('defaulttemp.txt', 'r')
-        f_or_c = ff.read().strip()
+        f_or_c = ff.read()
         ff.close()
     elif choises!='Another City':
         new_city_name = choises
-        ff = open('defaulttemp.txt', 'r')
-        f_or_cc = ff.read()
-        ff.close()
-        new_type = st.text_input(
-            f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
-        if (new_type == ''):
-            pass
-        else:
-            ff = open('defaulttemp.txt', 'r')
-            if (ff.read().strip() == 'f'):
-                ff.close()
-                ff = open('defaulttemp.txt', 'w')
-                print('c', file=ff)
-                ff.close()
-            else:
-                ff.close()
-                ff = open('defaulttemp.txt', 'w')
-                print('f', file=ff)
-                ff.close()
-                ff = open('defaulttemp.txt', 'r')
-                f_or_c = ff.read().strip()
         ff = open('defaulttemp.txt', 'r')
         f_or_c = ff.read().strip()
         ff.close()
@@ -141,10 +98,12 @@ else:
                 print(ncn, file=f)
                 f.close()
         ff = open('defaulttemp.txt', 'r')
-        f_or_ccc = ff.read()
+        f_or_c = ff.read().strip()
         ff.close()
-        new_type1=st.text_input(f'Type change if you want to change the temperature unit from {f_or_ccc}, else press enter')
-        if  (new_type1==''):
+    if choises:
+        new_type = st.text_input(
+            f'Type change if you want to change the temperature unit from {f_or_c}, else press enter')
+        if (new_type == ''):
             pass
         else:
             ff = open('defaulttemp.txt', 'r')
@@ -161,28 +120,48 @@ else:
                 ff = open('defaulttemp.txt', 'r')
                 f_or_c = ff.read().strip()
                 ff.close()
-
-        if choises:
-            url1 = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
-            r = rq.get(url1)
-            results = json.loads(r.text)
-            st.write(f'The weather at {new_city_name} is', results['weather'][0]['main'])
-            if (f_or_c == 'c'):
-                st.write(f'The temperature at {new_city_name} is', int((results['main']['temp']) - 273),
-                         "Celsius Degrees")
+        ff = open('defaulttemp.txt', 'r')
+        f_or_c = ff.read().strip()
+        ff.close()
+        url1 = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
+        r = rq.get(url1)
+        results = json.loads(r.text)
+        st.write(f'The weather at {new_city_name} is', results['weather'][0]['main'])
+        if (f_or_c == 'c'):
+            st.write(f'The temperature at {new_city_name} is', int((results['main']['temp']) - 273),
+                    "Celsius Degrees")
+        else:
+            st.write(f'The temperature at {new_city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                    "Fahrenheit Degrees")
+        st.write(f'The humidity percent at {new_city_name} is', results['main']['humidity'], "%")
+    elif other_choises:
+        new_type1 = st.text_input(
+            f'Type change if you want to change the temperature unit from {f_or_c}, else press enter')
+        if (new_type1 == ''):
+            pass
+        else:
+            ff = open('defaulttemp.txt', 'r')
+            if (ff.read().strip() == 'f'):
+                ff.close()
+                ff = open('defaulttemp.txt', 'w')
+                print('c', file=ff)
+                ff.close()
             else:
-                st.write(f'The temperature at {new_city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32,
-                         "Fahrenheit Degrees")
-            st.write(f'The humidity percent at {new_city_name} is', results['main']['humidity'], "%")
-        if other_choises:
-            url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
-            r = rq.get(url)
-            results = json.loads(r.text)
-            st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
-            if (f_or_c == 'c'):
-                st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                         "Celsius Degrees")
-            else:
-                st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
-                         "Fahrenheit Degrees")
-            st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
+                ff.close()
+                ff = open('defaulttemp.txt', 'w')
+                print('f', file=ff)
+                ff.close()
+                ff = open('defaulttemp.txt', 'r')
+                f_or_c = ff.read().strip()
+                ff.close()
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
+        r = rq.get(url)
+        results = json.loads(r.text)
+        st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
+        if (f_or_c == 'c'):
+            st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
+                    "Celsius Degrees")
+        else:
+            st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                    "Fahrenheit Degrees")
+        st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
