@@ -106,8 +106,8 @@ else:
         ff.close()
     if choises=='Another city':
         new_type1 = st.text_input(
-        f'Type change if you want to change the temperature unit from {f_or_c}, else press enter')
-        if (new_type1 == ''):
+        f'Type change if you want to change the temperature unit from {f_or_c}, else type no')
+        if (new_type1 == 'no'):
             pass
         else:
             ff = open('defaulttemp.txt', 'r')
@@ -138,8 +138,8 @@ else:
                 st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
     elif choises!='Another city':
         new_type = st.text_input(
-            f'Type change if you want to change the temperature unit from {f_or_c}, else press enter')
-        if (new_type == ''):
+            f'Type change if you want to change the temperature unit from {f_or_c}, else type no')
+        if (new_type == 'no'):
             pass
         else:
             ff = open('defaulttemp.txt', 'r')
