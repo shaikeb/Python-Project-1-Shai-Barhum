@@ -58,13 +58,11 @@ else:
             city_from_list_striped=line.strip()
             cities.append(city_from_list_striped)
     results_button=[]
-    results_button_another = []
     results_button.append(f'default city: {cities[0]}')
     for i in range (1,int(len(cities))):
         results_button.append(cities[i])
-    results_button_another.append('Another city')
-    choises=st.radio('Choose City', results_button)
-    other_choises = st.radio('My city is not here', results_button_another)
+    results_button.append('Another city')
+    choises = st.radio('Pick Up a city', results_button)
     if choises == f'default city: {cities[0]}':
         new_city_name = cities[0]
         ff = open('defaulttemp.txt', 'r')
@@ -75,7 +73,7 @@ else:
         ff = open('defaulttemp.txt', 'r')
         f_or_c = ff.read().strip()
         ff.close()
-    if other_choises:
+    if choises!='Another City':
         ncn=st.text_input('Please type the city name:')
         url3 = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
         r = rq.get(url3)
@@ -100,7 +98,7 @@ else:
         ff = open('defaulttemp.txt', 'r')
         f_or_c = ff.read().strip()
         ff.close()
-    if choises:
+    if choises!='Another City':
         new_type = st.text_input(
             f'Type change if you want to change the temperature unit from {f_or_c}, else press enter')
         if (new_type == ''):
