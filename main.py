@@ -107,9 +107,7 @@ else:
     if choises=='Another city':
         new_type1 = st.text_input(
         f'Type change if you want to Change the temperature unit from {f_or_c}, else type No')
-        if (new_type1 == 'No'):
-            pass
-        else:
+        if (new_type1 == 'Change'):
             ff = open('defaulttemp.txt', 'r')
             if (ff.read().strip() == 'f'):
                 ff.close()
@@ -139,9 +137,7 @@ else:
     elif choises!='Another city':
         new_type = st.text_input(
             f'Type Change if you want to change the temperature unit from {f_or_c}, else type No')
-        if (new_type == 'No'):
-            pass
-        else:
+        if (new_type == 'Change'):
             ff = open('defaulttemp.txt', 'r')
             if (ff.read().strip() == 'f'):
                 ff.close()
