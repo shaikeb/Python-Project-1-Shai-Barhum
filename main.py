@@ -48,13 +48,12 @@ if (city=='Default'):
         else:
             st.write(f'The temperature at {city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32, "Fahrenheit Degrees")
         st.write(f'The humidity percent at {city_name} is', results['main']['humidity'], "%")
-        if st.button("Ok, Lets move forward"):
-            with open('default.txt', 'w') as f:
-                print(city_name)
-                print(city_name_1)
-                print(city_name_2)
-            with open('defaulttemp.txt', 'w') as ff:
-                print(type)
+        with open('default.txt', 'w') as f:
+            print(city_name)
+            print(city_name_1)
+            print(city_name_2)
+        with open('defaulttemp.txt', 'w') as ff:
+            print(type)
 else:
     cities=[]
     with open('default.txt', 'r') as f:
