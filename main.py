@@ -52,9 +52,6 @@ if (city=='Default'):
         st.write(f'The temperature at {city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32, "Fahrenheit Degrees")
     st.write(f'The humidity percent at {city_name} is', results['main']['humidity'], "%")
 else:
-    ff = open('defaulttemp.txt', 'r')
-    f_or_cc = ff.read()
-    ff.close()
     cities=[]
     with open('default.txt', 'r') as f:
         for line in f:
@@ -70,6 +67,9 @@ else:
     other_choises = st.radio('My city is not here', results_button_another)
     if choises == f'default city: {cities[0]}':
         new_city_name = cities[0]
+        ff = open('defaulttemp.txt', 'r')
+        f_or_cc = ff.read()
+        ff.close()
         new_type = st.text_input(
             f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
         if (new_type == ''):
@@ -94,6 +94,9 @@ else:
         ff.close()
     elif choises!='Another City':
         new_city_name = choises
+        ff = open('defaulttemp.txt', 'r')
+        f_or_cc = ff.read()
+        ff.close()
         new_type = st.text_input(
             f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
         if (new_type == ''):
@@ -137,6 +140,9 @@ else:
                 f = open('default.txt', 'a')
                 print(ncn, file=f)
                 f.close()
+        ff = open('defaulttemp.txt', 'r')
+        f_or_cc = ff.read()
+        ff.close()
         new_type=st.text_input(f'Type change if you want to change the temperature unit from {f_or_cc}, else press enter')
         if  (new_type==''):
             pass
@@ -155,7 +161,7 @@ else:
                 ff = open('defaulttemp.txt', 'r')
                 f_or_c = ff.read().strip()
                 ff.close()
-     
+
         if choises:
             url1 = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
             r = rq.get(url1)
