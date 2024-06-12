@@ -8,29 +8,32 @@ if (city=='Default'):
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
     r = rq.get(url)
     results = json.loads(r.text)
-    while results['cod']=='404':
-        city_name = st.text_input('Try again')
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
-        r = rq.get(url)
-        results = json.loads(r.text)
+    if city_name:
+        while results['cod']=='404':
+            city_name = st.text_input('Try again')
+            url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
+            r = rq.get(url)
+            results = json.loads(r.text)
     city_name_1=st.text_input(f'In addition to {city_name}, I might want to know the weather at...')
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name_1}&appid=80dfc5415edfd995583e08d0977bf427"
     r = rq.get(url)
     results = json.loads(r.text)
-    while results['cod'] == '404':
-        city_name_1 = st.text_input('Try again')
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name_1}&appid=80dfc5415edfd995583e08d0977bf427"
-        r = rq.get(url)
-        results = json.loads(r.text)
-    city_name_2 =st.text_input('In case there is another city, type it now, else click enter')
+    if city_name_1:
+        while results['cod'] == '404':
+            city_name_1 = st.text_input('Try again')
+            url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name_1}&appid=80dfc5415edfd995583e08d0977bf427"
+            r = rq.get(url)
+            results = json.loads(r.text)
+    city_name_2 =st.text_input('Type another city name:')
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name_2}&appid=80dfc5415edfd995583e08d0977bf427"
     r = rq.get(url)
     results = json.loads(r.text)
-    while results['cod'] == '404':
-        city_name_2 = st.text_input('Try again')
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name_2}&appid=80dfc5415edfd995583e08d0977bf427"
-        r = rq.get(url)
-        results = json.loads(r.text)
+    if city_name_2:
+        while results['cod'] == '404':
+            city_name_2 = st.text_input('Try again')
+            url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name_2}&appid=80dfc5415edfd995583e08d0977bf427"
+            r = rq.get(url)
+            results = json.loads(r.text)
     type=st.text_input('I want the temperature to be presented in (type f or c)')
     while type != 'c' and 'f':
         type = st.text_input('Try again')
