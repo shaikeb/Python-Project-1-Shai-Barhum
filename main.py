@@ -133,7 +133,7 @@ else:
                             st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
                                     "Fahrenheit Degrees")
                         st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
-                    else:
+                    if Yes_or_No2 == 'No':
                         url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
                         r = rq.get(url)
                         results = json.loads(r.text)
