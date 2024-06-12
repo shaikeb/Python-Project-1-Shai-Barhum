@@ -3,7 +3,8 @@ import json
 import streamlit as st
 f=open ('default.txt', 'r')
 city=f.read()
-if (city=='Default'):
+Move=st.button('Click here after done with start settings')
+if (city=='Default' & Move):
     city_name=st.text_input('I want to know the weather at the next default city...')
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
     r = rq.get(url)
