@@ -100,9 +100,41 @@ else:
                 f'Type Change if you want to Change the temperature unit from {f_or_c}, else type No')
             if new_type1:
                 Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
-                st.write(Yes_or_No1)
-                if Yes_or_No1:
-                    if Yes_or_No1=='Yes':
+                if Yes_or_No1=='Yes':
+                    url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
+                    r = rq.get(url)
+                    results = json.loads(r.text)
+                    st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
+                    if (f_or_c == 'c'):
+                        if (new_type1 == 'No'):
+                            st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
+                                "Celsius Degrees")
+                        else:
+                            st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                                    "Fahrenheit Degrees")
+                    else:
+                        if (new_type1 == 'No'):
+                            st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                                    "Fahrenheit Degrees")
+                        else:
+                            st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
+                                    "Celsius Degrees")
+                    st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
+                    url_pic = f"https://api.serpdog.io/images?api_key=666c5b552b100a1c2e712579&q={ncn}city&gl=us"
+                    r_pic = rq.get(url_pic)
+                    results_pic = json.loads(r_pic.text)
+                    st.image(results_pic['image_results'][0]['image'])
+                    with open('default.txt', 'w') as f:
+                        print (ncn, file=f)
+                        for word in cities:
+                            print (word, file=f)
+                    Yes_or_No1 = ''
+                if Yes_or_No1=='No':
+                    Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
+                    if Yes_or_No2=='Yes':
+                        f = open('default.txt', 'a')
+                        print(ncn, file=f)
+                        f.close()
                         url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
                         r = rq.get(url)
                         results = json.loads(r.text)
@@ -110,13 +142,15 @@ else:
                         if (f_or_c == 'c'):
                             if (new_type1 == 'No'):
                                 st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                                    "Celsius Degrees")
+                                        "Celsius Degrees")
                             else:
-                                st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                                st.write(f'The temperature at {ncn} is',
+                                        1.8 * int((results['main']['temp']) - 273) + 32,
                                         "Fahrenheit Degrees")
                         else:
                             if (new_type1 == 'No'):
-                                st.write(f'The temperature at {ncn} is', 1.8 * int((results['main']['temp']) - 273) + 32,
+                                st.write(f'The temperature at {ncn} is',
+                                        1.8 * int((results['main']['temp']) - 273) + 32,
                                         "Fahrenheit Degrees")
                             else:
                                 st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
@@ -126,67 +160,36 @@ else:
                         r_pic = rq.get(url_pic)
                         results_pic = json.loads(r_pic.text)
                         st.image(results_pic['image_results'][0]['image'])
-                        with open('default.txt', 'w') as f:
-                            print (ncn, file=f)
-                            for word in cities:
-                                print (word, file=f)
-                    if Yes_or_No1=='No':
-                        Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
-                        if Yes_or_No2=='Yes':
-                            f = open('default.txt', 'a')
-                            print(ncn, file=f)
-                            f.close()
-                            url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
-                            r = rq.get(url)
-                            results = json.loads(r.text)
-                            st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
-                            if (f_or_c == 'c'):
-                                if (new_type1 == 'No'):
-                                    st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                                            "Celsius Degrees")
-                                else:
-                                    st.write(f'The temperature at {ncn} is',
-                                            1.8 * int((results['main']['temp']) - 273) + 32,
-                                            "Fahrenheit Degrees")
+                        Yes_or_No1 = ''
+                        Yes_or_No2 = ''
+                    if Yes_or_No2 == 'No':
+                        url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
+                        r = rq.get(url)
+                        results = json.loads(r.text)
+                        st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
+                        if (f_or_c == 'c'):
+                            if (new_type1 == 'No'):
+                                st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
+                                        "Celsius Degrees")
                             else:
-                                if (new_type1 == 'No'):
-                                    st.write(f'The temperature at {ncn} is',
-                                            1.8 * int((results['main']['temp']) - 273) + 32,
-                                            "Fahrenheit Degrees")
-                                else:
-                                    st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                                            "Celsius Degrees")
-                            st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
-                            url_pic = f"https://api.serpdog.io/images?api_key=666c5b552b100a1c2e712579&q={ncn}city&gl=us"
-                            r_pic = rq.get(url_pic)
-                            results_pic = json.loads(r_pic.text)
-                            st.image(results_pic['image_results'][0]['image'])
-                        if Yes_or_No2 == 'No':
-                            url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
-                            r = rq.get(url)
-                            results = json.loads(r.text)
-                            st.write(f'The weather at {ncn} is', results['weather'][0]['main'])
-                            if (f_or_c == 'c'):
-                                if (new_type1 == 'No'):
-                                    st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                                            "Celsius Degrees")
-                                else:
-                                    st.write(f'The temperature at {ncn} is',
-                                            1.8 * int((results['main']['temp']) - 273) + 32,
-                                            "Fahrenheit Degrees")
+                                st.write(f'The temperature at {ncn} is',
+                                        1.8 * int((results['main']['temp']) - 273) + 32,
+                                        "Fahrenheit Degrees")
+                        else:
+                            if (new_type1 == 'No'):
+                                st.write(f'The temperature at {ncn} is',
+                                        1.8 * int((results['main']['temp']) - 273) + 32,
+                                        "Fahrenheit Degrees")
                             else:
-                                if (new_type1 == 'No'):
-                                    st.write(f'The temperature at {ncn} is',
-                                            1.8 * int((results['main']['temp']) - 273) + 32,
-                                            "Fahrenheit Degrees")
-                                else:
-                                    st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
-                                            "Celsius Degrees")
-                            st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
-                            url_pic = f"https://api.serpdog.io/images?api_key=666c5b552b100a1c2e712579&q={ncn}city&gl=us"
-                            r_pic = rq.get(url_pic)
-                            results_pic = json.loads(r_pic.text)
-                            st.image(results_pic['image_results'][0]['image'])
+                                st.write(f'The temperature at {ncn} is', int((results['main']['temp']) - 273),
+                                        "Celsius Degrees")
+                        st.write(f'The humidity percent at {ncn} is', results['main']['humidity'], "%")
+                        url_pic = f"https://api.serpdog.io/images?api_key=666c5b552b100a1c2e712579&q={ncn}city&gl=us"
+                        r_pic = rq.get(url_pic)
+                        results_pic = json.loads(r_pic.text)
+                        st.image(results_pic['image_results'][0]['image'])
+                        Yes_or_No1 = ''
+                        Yes_or_No2 = ''
     elif choises!='Another city':
         new_type = st.text_input(
             f'Type Change if you want to change the temperature unit from {f_or_c}, else type No')
