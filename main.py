@@ -116,10 +116,6 @@ else:
             if new_type1:
                 Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
                 if Yes_or_No1=='Yes':
-                    with open('default.txt', 'w') as f:
-                        print (ncn, file=f)
-                        for word in cities:
-                            print (word, file=f)
                     url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
                     r = rq.get(url)
                     results = json.loads(r.text)
@@ -136,6 +132,10 @@ else:
                     r_pic = rq.get(url_pic)
                     results_pic = json.loads(r_pic.text)
                     st.image(results_pic['image_results'][0]['image'])
+                    with open('default.txt', 'w') as f:
+                        print (ncn, file=f)
+                        for word in cities:
+                            print (word, file=f)
                 elif Yes_or_No1=='No':
                     Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
                     if Yes_or_No2=='Yes':
