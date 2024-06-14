@@ -131,7 +131,7 @@ else:
                             print (word, file=f)
                     Yes_or_No1 = ''
                     ncn = ''
-                    if ncn == '':
+                    if Yes_or_No1 == '':
                         if results_pic:
                             if (new_type1 == 'Change'):
                                 ff = open('defaulttemp.txt', 'r')
