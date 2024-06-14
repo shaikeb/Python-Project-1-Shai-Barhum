@@ -113,6 +113,7 @@ else:
                     ff = open('defaulttemp.txt', 'r')
                     f_or_c = ff.read().strip()
                     ff.close()
+                st.write(new_type1)
             if new_type1 or new_type1=='Change':
                 Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
                 if Yes_or_No1=='Yes':
