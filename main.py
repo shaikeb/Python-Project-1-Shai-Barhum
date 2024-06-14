@@ -128,7 +128,7 @@ else:
                         print (ncn, file=f)
                         for word in cities:
                             print (word, file=f)
-                elif Yes_or_No1=='No':
+                if Yes_or_No1=='No':
                     Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
                     if Yes_or_No2=='Yes':
                         f = open('default.txt', 'a')
