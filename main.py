@@ -130,7 +130,6 @@ else:
                         for word in cities:
                             print (word, file=f)
                     Yes_or_No1 = ''
-                    ncn = ''
                     if Yes_or_No1 == '':
                         if results_pic:
                             if (new_type1 == 'Change'):
@@ -179,10 +178,9 @@ else:
                         r_pic = rq.get(url_pic)
                         results_pic = json.loads(r_pic.text)
                         st.image(results_pic['image_results'][0]['image'])
-                        ncn = ''
                         Yes_or_No1 = ''
                         Yes_or_No2 = ''
-                        if ncn == '':
+                        if Yes_or_No1 == '':
                             if results_pic:
                                 if (new_type1 == 'Change'):
                                     ff = open('defaulttemp.txt', 'r')
@@ -225,10 +223,9 @@ else:
                         r_pic = rq.get(url_pic)
                         results_pic = json.loads(r_pic.text)
                         st.image(results_pic['image_results'][0]['image'])
-                        ncn=''
                         Yes_or_No1 = ''
                         Yes_or_No2 = ''
-                        if ncn == '':
+                        if Yes_or_No1 == '':
                             if results_pic:
                                 if (new_type1 == 'Change'):
                                     ff = open('defaulttemp.txt', 'r')
