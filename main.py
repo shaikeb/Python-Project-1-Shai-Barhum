@@ -37,7 +37,7 @@ if (city=='Default'):
             results = json.loads(r.text)
     type=st.text_input('I want the temperature to be presented in (type f or c)')
     if type:
-        while type != 'c' and 'f':
+        while type != 'c' and type != 'f':
             type = st.text_input('Try again')
     if st.button("Send"):
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid=80dfc5415edfd995583e08d0977bf427"
