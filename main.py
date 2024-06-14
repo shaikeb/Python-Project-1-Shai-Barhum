@@ -1,6 +1,7 @@
 import requests as rq
 import json
 import streamlit as st
+st.title('Project-1-DS17-Shai Barhum')
 f=open ('default.txt', 'r')
 city=f.read()
 if (city=='Default'):
