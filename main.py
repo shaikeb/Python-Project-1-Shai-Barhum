@@ -187,21 +187,6 @@ else:
                             r_pic = rq.get(url_pic)
                             results_pic = json.loads(r_pic.text)
                             st.image(results_pic['image_results'][0]['image'])
-                if (new_type1 == 'Change'):
-                    ff = open('defaulttemp.txt', 'r')
-                    if (ff.read().strip() == 'f'):
-                        ff.close()
-                        ff = open('defaulttemp.txt', 'w')
-                        print('c', file=ff)
-                        ff.close()
-                    else:
-                        ff.close()
-                        ff = open('defaulttemp.txt', 'w')
-                        print('f', file=ff)
-                        ff.close()
-                        ff = open('defaulttemp.txt', 'r')
-                        f_or_c = ff.read().strip()
-                        ff.close()
     elif choises!='Another city':
         new_type = st.text_input(
             f'Type Change if you want to change the temperature unit from {f_or_c}, else type No')
@@ -239,4 +224,19 @@ else:
             r_pic = rq.get(url_pic)
             results_pic = json.loads(r_pic.text)
             st.image(results_pic['image_results'][0]['image'])
+if (new_type1 == 'Change'):
+    ff = open('defaulttemp.txt', 'r')
+    if (ff.read().strip() == 'f'):
+        ff.close()
+        ff = open('defaulttemp.txt', 'w')
+        print('c', file=ff)
+        ff.close()
+    else:
+        ff.close()
+        ff = open('defaulttemp.txt', 'w')
+        print('f', file=ff)
+        ff.close()
+        ff = open('defaulttemp.txt', 'r')
+        f_or_c = ff.read().strip()
+        ff.close()
 
