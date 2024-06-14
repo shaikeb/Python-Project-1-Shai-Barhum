@@ -48,6 +48,10 @@ if (city=='Default'):
         else:
             st.write(f'The temperature at {city_name} is', 1.8 * int((results['main']['temp']) - 273) + 32, "Fahrenheit Degrees")
         st.write(f'The humidity percent at {city_name} is', results['main']['humidity'], "%")
+        url_pic = f"https://api.serpdog.io/images?api_key=666c5b552b100a1c2e712579&q={city_name}&gl=us"
+        r_pic = rq.get(url_pic)
+        results_pic = json.loads(r_pic.text)
+        st.image(results_pic['image_results'][0]['image'])
         f = open('default.txt', 'w')
         print(city_name, file=f)
         print(city_name_1, file=f)
