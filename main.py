@@ -129,6 +129,24 @@ else:
                         for word in cities:
                             print (word, file=f)
                     Yes_or_No1 = ''
+                    ncn = ''
+                    if ncn == '':
+                        if results_pic:
+                            if (new_type1 == 'Change'):
+                                ff = open('defaulttemp.txt', 'r')
+                                if (ff.read().strip() == 'f'):
+                                    ff.close()
+                                    ff = open('defaulttemp.txt', 'w')
+                                    print('c', file=ff)
+                                    ff.close()
+                                else:
+                                    ff.close()
+                                    ff = open('defaulttemp.txt', 'w')
+                                    print('f', file=ff)
+                                    ff.close()
+                                    ff = open('defaulttemp.txt', 'r')
+                                    f_or_c = ff.read().strip()
+                                    ff.close()
                 if Yes_or_No1=='No':
                     Yes_or_No2 = st.text_input(f'Do you want to append the new city to my favorite list? Type Yes or No')
                     if Yes_or_No2=='Yes':
@@ -160,8 +178,26 @@ else:
                         r_pic = rq.get(url_pic)
                         results_pic = json.loads(r_pic.text)
                         st.image(results_pic['image_results'][0]['image'])
+                        ncn = ''
                         Yes_or_No1 = ''
                         Yes_or_No2 = ''
+                        if ncn == '':
+                            if results_pic:
+                                if (new_type1 == 'Change'):
+                                    ff = open('defaulttemp.txt', 'r')
+                                    if (ff.read().strip() == 'f'):
+                                        ff.close()
+                                        ff = open('defaulttemp.txt', 'w')
+                                        print('c', file=ff)
+                                        ff.close()
+                                    else:
+                                        ff.close()
+                                        ff = open('defaulttemp.txt', 'w')
+                                        print('f', file=ff)
+                                        ff.close()
+                                        ff = open('defaulttemp.txt', 'r')
+                                        f_or_c = ff.read().strip()
+                                        ff.close()
                     if Yes_or_No2 == 'No':
                         url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
                         r = rq.get(url)
@@ -188,8 +224,26 @@ else:
                         r_pic = rq.get(url_pic)
                         results_pic = json.loads(r_pic.text)
                         st.image(results_pic['image_results'][0]['image'])
+                        ncn=''
                         Yes_or_No1 = ''
                         Yes_or_No2 = ''
+                        if ncn == '':
+                            if results_pic:
+                                if (new_type1 == 'Change'):
+                                    ff = open('defaulttemp.txt', 'r')
+                                    if (ff.read().strip() == 'f'):
+                                        ff.close()
+                                        ff = open('defaulttemp.txt', 'w')
+                                        print('c', file=ff)
+                                        ff.close()
+                                    else:
+                                        ff.close()
+                                        ff = open('defaulttemp.txt', 'w')
+                                        print('f', file=ff)
+                                        ff.close()
+                                        ff = open('defaulttemp.txt', 'r')
+                                        f_or_c = ff.read().strip()
+                                        ff.close()
     elif choises!='Another city':
         new_type = st.text_input(
             f'Type Change if you want to change the temperature unit from {f_or_c}, else type No')
@@ -227,20 +281,5 @@ else:
             r_pic = rq.get(url_pic)
             results_pic = json.loads(r_pic.text)
             st.image(results_pic['image_results'][0]['image'])
-if results_pic:
-    if (new_type1 == 'Change'):
-        ff = open('defaulttemp.txt', 'r')
-        if (ff.read().strip() == 'f'):
-            ff.close()
-            ff = open('defaulttemp.txt', 'w')
-            print('c', file=ff)
-            ff.close()
-        else:
-            ff.close()
-            ff = open('defaulttemp.txt', 'w')
-            print('f', file=ff)
-            ff.close()
-            ff = open('defaulttemp.txt', 'r')
-            f_or_c = ff.read().strip()
-            ff.close()
+
 
