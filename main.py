@@ -172,7 +172,7 @@ else:
                         r_pic = rq.get(url_pic)
                         results_pic = json.loads(r_pic.text)
                         st.image(results_pic['image_results'][0]['image'])
-            elif new_type1='No':
+            elif new_type1=='No':
                 Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
                 if Yes_or_No1=='Yes':
                     url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
