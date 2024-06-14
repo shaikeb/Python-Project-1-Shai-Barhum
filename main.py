@@ -100,6 +100,7 @@ else:
                 f'Type Change if you want to Change the temperature unit from {f_or_c}, else type No')
             if new_type1:
                 Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
+                st.write(Yes_or_No1)
                 if Yes_or_No1=='Yes':
                     url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
                     r = rq.get(url)
