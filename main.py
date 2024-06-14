@@ -263,7 +263,7 @@ else:
         ff = open('defaulttemp.txt', 'r')
         f_or_c = ff.read().strip()
         ff.close()
-        if new_type=='No' or new_type=='Change':
+        if st.button("Send"):
             url1 = f"https://api.openweathermap.org/data/2.5/weather?q={new_city_name}&appid=80dfc5415edfd995583e08d0977bf427"
             r = rq.get(url1)
             results = json.loads(r.text)
