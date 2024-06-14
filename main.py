@@ -113,7 +113,7 @@ else:
                     ff = open('defaulttemp.txt', 'r')
                     f_or_c = ff.read().strip()
                     ff.close()
-            if new_type1:
+            if new_type1 or new_type1=='Change':
                 Yes_or_No1 = st.text_input(f'Do you want to define the new city as your default city? Type Yes or No')
                 if Yes_or_No1=='Yes':
                     url = f"https://api.openweathermap.org/data/2.5/weather?q={ncn}&appid=80dfc5415edfd995583e08d0977bf427"
